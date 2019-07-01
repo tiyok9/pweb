@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap-4.3.1/dist/css/bootstrap.min.css">
+	
+	<script src="css/angular-1.7.8/angular.min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css">
+		
+	}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top bg-success">
+   
+      		<a class="navbar-brand ml-auto mr-auto " href="index.html">TaOL</a>
+      
+    </nav>
+
+<div class="container lisbrgmt">
+	<h3 class="brgh1">Keranjang</h3>
+  <div ng-app="myApp" ng-init="count=1;brg=20000;total=brg;" ng-controller="myctrl">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card brd" style="width: 100%; height: 300px;">
+			  <div class="card-header bg-success ">
+			    	<h5 class="card-title listbrgh1">List Barang</h5>
+			    </div>
+			    <div class="card-header bg-light listbrgheader"></div>
+			  <div class="card-body bg-secondary" >
+			    <div class="row listbrgmt2">
+			    	<img src="image/jagung.jpg" class="lisbrgpic mr-3 ml-4">
+			    	<div class="col">
+			    		<h5 class="listbrgh1">Nama Barang</h5>
+			    		<h6 class="ml-2 ">Rp.{{baju}}</h6>
+			    	</div>
+			    	<div class="row listbrgmt1 listbrgmr " >
+						
+			    		<button type="button" class="btn btn-light rounded-circle listbrgbtn  " id="kurang" ng-click="count = count - 1;total=brg*count">-</button>
+						<p class="mr-2 ml-2 mt-2" id="kont">{{count}}</p>
+						<button type="button" class="btn btn-light rounded-circle listbrgbtn "ng-click="count = count + 1;total=brg*count" >+</button>
+			    	</div>
+			    	</div>
+			    
+			  </div>
+			</div>
+		</div>
+					<div class="col-md-6">
+						<div class="card brd listbrgwid" >
+							<div class="card-body">
+						    <h5 class="card-title listbrgh1">Ringkasan Harga</h5>
+						    <hr>
+						    <h5 class="card-title listbrgh1">Total Harga</h5>
+						    <hr>
+						    <p>{{total}}</p>
+						    <a href="pembayaran.html">
+						    	  <button type="button" class="btn btn-danger brgml listbrgmt2">Bayar</button>
+						    </a>
+						  
+						  </div>
+					</div>
+				</div> 
+			</div>
+		</div>
+</div> 
+
+
+
+
+   <script type="text/javascript">
+                                        
+    var app = angular.module("myApp",[]);
+    app.controller('myctrl',function($scope) {
+    });
+    
+    
+</script>
+                                    
+<script >
+	$(document).ready(function(){
+		var fuck = $("kont").val();
+		$("#kurang").click(function(){
+			if (fuck > 0) {
+				
+				$("#kurang").attr("disabled", false);
+
+			}else{
+				$("#kurang").attr("disabled", true);
+			}
+		});
+	});
+</script>
+	 <script src="js/popper.min.js" ></script>
+	 <script src="js/bootstrap.min.js" ></script>
+</body>
+</html>

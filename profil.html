@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap-4.3.1/dist/css/bootstrap.min.css">
+	
+	<script src="css/angular-1.7.8/angular.min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	
+	
+	<style type="text/css">
+		.ktk{
+			width: 100%;
+			height: 650px;
+			display: flex;
+			flex-direction: row;
+		}
+		.ktk1{
+			width: 20%;
+			margin-top: 150px;
+			margin-left: 100px;
+			height: 420px;
+		
+			border-radius: 20px;
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+
+		}
+		.ktk2{
+			width: 50%;
+			height: 400px;
+			margin-top: 150px;
+			margin-left: 100px;
+			
+			border-radius: 20px;
+			
+
+		}
+		.ktk4{
+			width: 100%;
+			height: 250px;
+			
+			border-radius: 20px;
+		}
+		.ktk3{
+			width: 100%;
+			height: 300px;
+			
+			border-radius: 20px;
+			
+		}
+		h4{
+			margin-left: 40px;
+			margin-top: 10px;
+		}
+		.k{
+			width: 100%;
+			height: 50px;
+			border-radius: 20px;
+			border:0;
+			
+		}
+		.btn-primary{
+			width: 80%;
+			height: 50px;
+			border-radius: 10px;
+			margin-top: 30px;
+			border:0;
+			
+			color: white;
+		}
+
+		
+
+
+	</style>
+</head>
+<body ng-app="fileUpload">
+	<nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top bg-success">
+   
+      		<a class="navbar-brand ml-auto mr-auto " href="index.html">TaOL</a>
+      
+    </nav>
+
+
+	<div ng-app="fileUpload" class="ktk ">
+		<div class="ktk1 ">
+			<div ng-controller="upload" class="ktk3 border  ">
+				<div class="ktk4">
+					<img ng-src="{{filepreview}}" width= "100%" height="100%" class="img-responsive shadow" ng-show="filepreview">
+				</div >
+				<button  class="btn btn-danger file k prof1" data-target="#p1" data-toggle="modal">Edit Foto</button> 
+				<a href="jualbarang.html">
+				<button class="btn btn-primary shadow">Jual Barang</button>
+				</a>
+			</div>
+			
+		</div>
+		<div class="ktk2 bg-light border text-secondary shadow">
+			<h4 class="profjd">Biodata Diri</h4>
+			<hr size="5px" width="100%" class="bg-muted">
+			<div class="col-md-9 ml-4 profm">
+				<table class="table table-borderless text-muted">
+				<tr>
+					<th class="prof2">Nama</th>
+					<td class="prof1">Anonymos</td>
+				</tr>
+				<tr>
+					<th class="prof2">Jenis Kelamin</th>
+					<td class="prof1">Laki-laki</td>
+				</tr>
+				<tr>
+					<th class="prof2">Email</th>
+					<td class="prof1">Kampretos@gmail.com</td>
+				</tr>
+				<tr>
+					<th class="prof2">No-Hp</th>
+					<td class="prof1">021-42435353</td>
+				</tr>
+
+				</table>
+			</div>
+			<div class="col-md-8 float-right mt-3 ">
+				<button class="btn btn-danger btn-sm rounded-pill" >Ubah Profile</button>
+			</div>
+			
+		</div>
+	</div>
+
+<div class="modal fade" id="p1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			     
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <input type="file" fileinput="file" filepreview="filepreview"/>
+			        </div>
+			      <div class="modal-footer"> 
+			      		<button type="button" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+			      </div>
+			    
+			  </div>
+			</div>
+
+
+
+	<script>
+	console.clear();
+			angular.module('fileUpload', [])
+			  .controller("upload", ['$scope', '$http', 'uploadService', function($scope, $http, uploadService) {
+			    $scope.$watch('file', function(newfile, oldfile) {
+			      if(angular.equals(newfile, oldfile) ){
+			        return;
+			      }
+
+			      uploadService.upload(newfile).then(function(res){
+			        // DO SOMETHING WITH THE RESULT!
+			        console.log("result", res);
+			      })
+			    });
+
+			  }])
+			  .service("uploadService", function($http, $q) {
+
+			    return ({
+			      upload: upload
+			    });
+
+			    function upload(file) {
+			      var upl = $http({
+			        method: 'POST',
+			        url: 'http://jsonplaceholder.typicode.com/posts', // /api/upload
+			        headers: {
+			          'Content-Type': 'multipart/form-data'
+			        },
+			        data: {
+			          upload: file
+			        },
+			        transformRequest: function(data, headersGetter) {
+			          var formData = new FormData();
+			          angular.forEach(data, function(value, key) {
+			            formData.append(key, value);
+			          });
+
+			          var headers = headersGetter();
+			          delete headers['Content-Type'];
+
+			          return formData;
+			        }
+			      });
+			      return upl.then(handleSuccess, handleError);
+
+			    } // End upload function
+
+			    // ---
+			    // PRIVATE METHODS.
+			    // ---
+			  
+			    function handleError(response, data) {
+			      if (!angular.isObject(response.data) ||!response.data.message) {
+			        return ($q.reject("An unknown error occurred."));
+			      }
+
+			      return ($q.reject(response.data.message));
+			    }
+
+			    function handleSuccess(response) {
+			      return (response);
+			    }
+
+			  })
+			  .directive("fileinput", [function() {
+			    return {
+			      scope: {
+			        fileinput: "=",
+			        filepreview: "="
+			      },
+			      link: function(scope, element, attributes) {
+			        element.bind("change", function(changeEvent) {
+			          scope.fileinput = changeEvent.target.files[0];
+			          var reader = new FileReader();
+			          reader.onload = function(loadEvent) {
+			            scope.$apply(function() {
+			              scope.filepreview = loadEvent.target.result;
+			            });
+			          }
+			          reader.readAsDataURL(scope.fileinput);
+			        });
+			      }
+			    }
+			  }]);
+
+</script>
+		<script src="js/popper.min.js" ></script>
+	 <script src="js/bootstrap.min.js" ></script>
+
+</body>
+</html>

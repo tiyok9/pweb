@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+    <link rel="stylesheet" href="css/bootstrap-4.3.1/dist/css/bootstrap.min.css">
+	
+	<script src="css/angular-1.7.8/angular.min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css">
+		.form-control{
+			width: 50%;
+			height: 30px;
+			resize: none;
+		}
+	}
+	textarea{
+
+	}
+	</style>
+</head>
+<body ng-app="fileUpload">
+	<nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top bg-success">
+   
+      		<a class="navbar-brand ml-auto mr-auto " href="index.html">TaOL</a>
+      
+    </nav>
+<div class="container row mt-bcg">
+	<div class="col-md-6 " ng-app="fileUpload">
+			<div ng-controller="upload" class="card bg-light mb-3 ml-5" style="width: 50%;height: 300px;">
+				  <img ng-src="{{filepreview}}" width= "100%" height="100%" class="img-responsive" ng-show="filepreview">
+				  <button  class="btn tombol1 mt-jlbrg border" id="mysubmit" data-target="#p2" data-toggle="modal" style="background-color: rgba(0, 0, 0, 0.03)">Klik to Upload</button> 
+				</div>
+				
+					
+				
+				
+	</div>
+	<div class="col-md-6">
+		<div class="card bg-light mb-3" style="width: 100%;">
+			  <div class="card-header">Header</div>
+			  <div class="card-body">
+			  <div class="form-group">
+					    <label>Nama Barang</label>
+					    <input type="text" class="form-control" >
+					    
+					  </div>
+					  <div class="form-group">
+					    <label>Nama Barang</label>
+					    <input type="text" class="form-control" >
+					    
+					  </div>
+			  </div>
+			</div>
+
+		<div class="card bg-light mb-3" style="width: 100%;">
+			  <div class="card-header">Header</div>
+			  <div class="card-body">
+			  <div class="form-group">
+					    <label>Harga Satuan </label>
+					    <input type="text" class="form-control" >
+					    
+					  </div>
+					  <div class="form-group">
+					    <label>Stok</label>
+					    <input type="text" class="form-control" >
+					    
+					  </div>
+					  <div class="form-group">
+					    <label>pembelian minimum</label>
+					    <input type="text" class="form-control" >
+					    
+					  </div>
+			  </div>
+			</div>
+
+		<div class="card bg-light mb-3" style="width: 100%;">
+			  <div class="card-header">Deskripsi Barang</div>
+			  <div class="card-body">
+			  <div class="form-group">
+					    <label>Deskripsi Barang</label>
+					   	<textarea class="form-control"></textarea>
+					    
+					  </div>
+					  
+			  </div>
+			</div>
+
+		<a href="index.html" class="btn btn-primary tombol" id="btnal">Submit</a>
+		
+	</div>
+</div>
+
+
+
+
+
+
+<div class="modal" id="p1" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+   
+      <div class="modal-body">
+        <p>Inputan sukses</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-primary btn-sm" data-target="#p1" data-toggle="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="p2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			     
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <input type="file" fileinput="file" filepreview="filepreview" id="myinput" oninput="hilang()"/>
+			        </div>
+			      <div class="modal-footer"> 
+			      		<button type="button" class="btn btn-danger tombol" data-dismiss="modal">Kembali</button>
+			      		
+			      </div>
+			    
+			  </div>
+			</div>
+<script>
+		$(document).ready(function() {
+			    $("#btnal").click(function(){
+			        alert("inputan suksess");
+			    }); 
+			});
+	</script>
+<script>
+function hilang(){
+var input = document.getElementById("myinput");
+var hilang = document.getElementById("mysubmit");
+if(input.value != ""){
+hilang.style.display ="none"; }
+else{hilang.style.display = "block";}
+}
+
+</script>
+
+<script>
+	console.clear();
+			angular.module('fileUpload', [])
+			  .controller("upload", ['$scope', '$http', 'uploadService', function($scope, $http, uploadService) {
+			    $scope.$watch('file', function(newfile, oldfile) {
+			      if(angular.equals(newfile, oldfile) ){
+			        return;
+			      }
+
+			      uploadService.upload(newfile).then(function(res){
+			        // DO SOMETHING WITH THE RESULT!
+			        console.log("result", res);
+			      })
+			    });
+
+			  }])
+			  .service("uploadService", function($http, $q) {
+
+			    return ({
+			      upload: upload
+			    });
+
+			    function upload(file) {
+			      var upl = $http({
+			        method: 'POST',
+			        url: 'http://jsonplaceholder.typicode.com/posts', // /api/upload
+			        headers: {
+			          'Content-Type': 'multipart/form-data'
+			        },
+			        data: {
+			          upload: file
+			        },
+			        transformRequest: function(data, headersGetter) {
+			          var formData = new FormData();
+			          angular.forEach(data, function(value, key) {
+			            formData.append(key, value);
+			          });
+
+			          var headers = headersGetter();
+			          delete headers['Content-Type'];
+
+			          return formData;
+			        }
+			      });
+			      return upl.then(handleSuccess, handleError);
+
+			    } // End upload function
+
+			    // ---
+			    // PRIVATE METHODS.
+			    // ---
+			  
+			    function handleError(response, data) {
+			      if (!angular.isObject(response.data) ||!response.data.message) {
+			        return ($q.reject("An unknown error occurred."));
+			      }
+
+			      return ($q.reject(response.data.message));
+			    }
+
+			    function handleSuccess(response) {
+			      return (response);
+			    }
+
+			  })
+			  .directive("fileinput", [function() {
+			    return {
+			      scope: {
+			        fileinput: "=",
+			        filepreview: "="
+			      },
+			      link: function(scope, element, attributes) {
+			        element.bind("change", function(changeEvent) {
+			          scope.fileinput = changeEvent.target.files[0];
+			          var reader = new FileReader();
+			          reader.onload = function(loadEvent) {
+			            scope.$apply(function() {
+			              scope.filepreview = loadEvent.target.result;
+			            });
+			          }
+			          reader.readAsDataURL(scope.fileinput);
+			        });
+			      }
+			    }
+			  }]);
+
+</script>
+
+
+
+	 <script src="js/popper.min.js" ></script>
+	 <script src="js/bootstrap.min.js" ></script>
+
+</body>
+</html>

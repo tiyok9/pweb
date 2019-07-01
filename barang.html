@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="css/bootstrap-4.3.1/dist/css/bootstrap.min.css">
+	
+	<script src="css/angular-1.7.8/angular.min.js"></script>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+
+    * { border:0; margin:0; padding:0; }
+    
+    .zoom {
+      display:inline-block;
+      position: relative;
+    }
+    
+  
+    .zoom:after {
+      content:'';
+      display:block; 
+      width:33px; 
+      height:33px; 
+      position:absolute; 
+      top:0;
+      right:0;
+      /*background:url(icon.png);*/
+    }
+
+    .zoom img {
+      display: block;
+    }
+
+    .zoom img::selection { background-color: transparent; }
+
+    textarea{
+    	resize: none;
+    }
+  </style>
+  <script src='js/jquery-3.4.1.min.js'></script>
+  <script src='js/jquery.zoom.js'></script>
+  <script>
+    $(document).ready(function(){
+      $('#ex1').zoom();
+      
+    });
+  </script>
+
+</head>
+<body>
+	<div ng-app="myApp" ng-init="count=1;brg=20000;total=brg;" ng-controller="myctrl">
+		<nav class="navbar navbar-expand-lg navbar-dark shadow fixed-top bg-success">
+   
+      		<a class="navbar-brand ml-auto mr-auto " href="index.html">TaOL</a>
+      
+    </nav>
+
+<div class="container  row brgmt">
+
+	<span class='zoom brgpc brgmlimg brgmt1 brgmrimg' id='ex1'>
+    <img src='image\guntingkebun.jpg' class="brgimguk shadow " alt='Daisy on the Ohoopee'/>
+    <!-- <p>Hover</p> -->
+  </span>
+   
+	<div class="card brgpad brgcard brd shadow" >
+			  <div class="card-body">
+			    <h1 class="card-title brgh1">Nama Barang</h1>
+			    <h7 class="card-subtitle mb-2 brgh7 text-muted">yogyakarta</h6>
+			    <h2 class="card-title brgh2 mt-2">Rp.{{brg}}</h2>
+			    <p class="brgp">minimal pembelian 0</p>
+				<div class="continer-fleet row">
+					<div class="card-body">
+						<div class="row">
+							<p class="card-title ml-2 brgmr1">jumlah</p>
+							<p class="card-title">catatan penjual</p>
+						</div>
+							<div class="row">
+							
+								<button type="button" class="btn btn-light rounded-circle brgbtn2" id="kurang" ng-click="count = count - 1;">-</button>
+								<p class="mr-1 ml-1 mt-2">{{count}}</p>
+								<button type="button" class="btn btn-light rounded-circle brgmr brgbtn2" ng-click="count = count + 1;">+</button>
+								<textarea class="brgtextarea border"></textarea>
+							</div>
+
+						
+					</div>
+				</div>
+				<p class="brgml">Dalam kg</p>
+				 <a href="listbarang.html" >
+				 	<button type="button" class="btn btn-danger brgml brgbtn">Tambah Keranjang</button>
+				 </a>
+				
+			  </div>
+		</div>
+</div>
+	   <script type="text/javascript">
+                                        
+    var app = angular.module("myApp",[]);
+    app.controller('myctrl',function($scope) {
+    });
+    
+    
+</script>
+                                    
+<script >
+	$(document).ready(function(){
+		var fuck = $("kont").val();
+		$("#kurang").click(function(){
+			if (fuck > 0) {
+				
+				$("#kurang").attr("disabled", false);
+
+			}else{
+				$("#kurang").attr("disabled", true);
+			}
+		});
+	});
+</script>
+	
+
+	
+	 <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
+</body>
+</html>
