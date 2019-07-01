@@ -1,0 +1,368 @@
+body{
+	margin: 0 auto;
+    font-size: auto;
+}
+
+
+/*search*/
+
+    .srcbox {
+             position: absolute;
+             top: 50%;
+             left: 45%;
+            transform: translate(-50%, -50%);
+             background: white;
+             height: 30px;
+            width: 48%;
+             border-radius: 40px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            }
+
+    .srcbox :hover > .srctxt{
+        width: width: 95%;
+
+    }
+
+    .srcbox:hover > .srcbtn {
+     background: grey;
+     color: black;
+    }
+
+    .srcbtn {
+     color: #e84118;
+     float: right;
+     width: 4%;
+     height: 80%;
+     border-radius: 50%;
+     background: white;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     transition: 0.4s;
+     color: white;
+     cursor: pointer;
+    }
+
+    .srcbtn > .sa {
+     font-size: 30px;
+    }
+
+    .srctxt {
+     border: none;
+     background: none;
+     outline: none;
+     float: left;
+     padding: 0;
+     color: black;
+     font-size: 12px;
+     transition: 0.4s;
+     line-height: 40px;
+     width: 95%;
+     
+    }
+
+    .searc{
+       width: 100%;
+       height: 100%;
+    }
+
+
+
+@media (max-width: 700px) {
+  /*  .bt{
+        margin-top: 10px;
+        margin-left: -10px;
+    }
+    .kt{
+        font-size: 5px;
+    }
+    .ket{
+        width: 80px;
+        margin-left: 5px;
+    }
+   
+
+    }
+    .pr{
+        margin-left: 0px;
+        margin-top: 20px;
+
+    }*/
+     .kth{
+        font-size: 10px;
+
+            }
+    /*profile*/
+    .hilang{
+        width: 0;
+        height: 0;
+    }
+
+
+    .prof1{
+        font-size: 10px;
+    }
+    .profjd{
+        font-size: 14px;
+    }
+    .profm{
+        margin-left: 5px;
+    }
+    .prof2{
+        font-size: 12px;
+    }
+    .pmbyr{
+        font-size: 10px;
+    }
+    .pmbyr1{
+        font-size: 14px;
+    }
+
+
+     /* brg*/
+    .brgh1{
+        font-size: 16px;
+    }
+    .brgh7{
+        font-size: 8px;
+    }
+    .brgh2{
+        font-size: 14px;
+    }
+    .brgp1{
+        font-size: 10px;
+    }
+    .brgbtn{
+        font-size: 8px;
+    }
+   .brgimguk{
+        height: 100px;
+    }
+
+    .brgpc{
+        width: 25%;
+        height: 20%;
+    }
+ 
+    /*listbarang/kerangjang*/
+    
+    .listbrgh1{
+        font-size: 12px;
+    }
+    .listbrgwid{
+        width: 100%;
+        height: 200px;
+    }
+
+
+/*  .srctxt {
+     border: none;
+     background: none;
+     outline: none;
+     float: left;
+     padding: 0;
+     color: white;
+     font-size: 16px;
+     transition: 0.4s;
+     line-height: 40px;
+     width: 0;
+     font-weight: bold;
+    }
+    .srcbox :hover > .srctxt{
+        width: width: 95%;
+
+    }*/
+
+ }
+
+
+
+
+@media (min-width: 1100px) {
+    
+
+
+
+
+    .pr1{
+        margin-left: 20px;
+    }
+    .pmbyr{
+        font-size: 14px;
+    }
+    .pmbyr1{
+        font-size: 16px;
+    }
+      .brgimguk{
+        height: 300px;
+    }
+    .brgpc{
+        width: 25%;
+        height: 20%;
+    }
+    .listbrgwid{
+        width: 50%;
+        height: 300px
+    }
+}
+
+/*listbarang/keranjang*/
+    .lisbrgpic{
+    width: 20%;
+    height: 20%;
+    }
+    .lisbrgmt{
+        margin-top: 100px;
+    }
+    .listbrgmt1{
+        margin-top: 50px;
+    }
+    .listbrgmt2{
+        margin-top: 10px;
+    }
+    .lisbrgpanel{
+        width: 30px;
+        height: 30px;
+        background-color: red;
+    }
+    .listbrgped{
+        padding-bottom: 90px;
+    }
+    .listbrgbtn{
+      width: 40px;  
+      height: 40px; 
+    }
+    .listbrgmr{
+        margin-right: 10%;
+    }
+    
+   
+    .listbrgheader{
+        height: 20px;
+    }
+    .listbrgwid{
+        width: 50%;
+        height: 300px
+    }
+  
+
+/* brg*/
+   .brgmt{
+    margin-top: 100px;
+    }
+    .brgmt1{
+        margin-top: 2%;
+    }
+
+    .brgp{
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+    .brgmr{
+        margin-right: 30%;
+    }
+    .brgmr1{
+        margin-right: 40%;
+    }
+    .brgml{
+        margin-left: 5%;
+    }
+   
+    .brgimguk{
+        height: 300px;
+    }
+    .brgpc{
+        width: 25%;
+        height: 20%;
+    }
+
+    .brgmlimg{
+        margin-left: 12%;
+    }
+    .brgmrimg{
+        margin-right: 10%;
+    }
+    .brgcard{
+        width: 50%;
+    }
+    .brgtextarea{
+        width: 40%;
+        height: 30px;
+    }
+     .brgbtn{
+        width: 35%;
+
+    }
+    .brgpad{
+        padding-left: 3%;
+        padding-top: 10px;
+        padding-bottom: 3%;
+    }
+    .brgbtn2{
+        width: 8%;
+    }
+
+.mt-bcg{
+    margin-top: 80px;
+}
+
+.mt-jlbrg{
+    margin-top: 40%
+}
+
+/*login style*/
+.bcg{
+    
+    
+    padding-top: 2%;
+    padding-left: 5%;
+    width:400px;
+    height: 530px;
+    border-style: groove;
+    margin-top: 80px;
+    border-radius: 20px;
+
+}
+
+
+.lgntl{
+    text-decoration: none;
+    color: green;
+}
+.lgntl:hover{
+    text-decoration: none;
+    color: white;
+}
+/*sign up style*/
+.bcgs{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.brd{
+    border-radius: 20px;
+}
+
+
+.dashtxtdrec{
+    text-decoration: none;
+}
+.dashtxtdrec1{
+    text-decoration: none;
+    color: white;
+}
+
+.lgntl:hover{
+    text-decoration: none;
+    color: grey;
+}  
+
+.sgnfont{
+    font-size: 10px;
+}
